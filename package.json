@@ -36,6 +36,7 @@
     "url-loader": "^0.5.5",
     "webpack": "^1.8.11",
     "webpack-dev-server": "^1.8.2",
+    "xhr": "^2.0.1",
     "yeticss": "^6.0.6"
   }
 }
