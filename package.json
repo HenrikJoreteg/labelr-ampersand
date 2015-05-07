@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server",
+    "prebuild": "rm -rf public && mkdir public",
     "build": "NODE_ENV=production webpack",
     "deploy": "surge -p public -d pnnl.surge.sh",
     "commit": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags",
@@ -28,6 +29,7 @@
     "jade": "^1.9.2",
     "jade-loader": "^0.7.1",
     "local-links": "^1.4.0",
+    "octicons": "^2.2.0",
     "qs": "^2.4.1",
     "react": "^0.13.2",
     "react-hot-loader": "^1.2.7",

@@ -3,6 +3,7 @@ var MainView = require('./main')
 var Router = require('./router')
 var Me = require('./models/me')
 require('./styles/main.styl')
+require('../node_modules/octicons/octicons/octicons.css')
 
 window.app = app
 
