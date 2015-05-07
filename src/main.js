@@ -13,6 +13,17 @@ module.exports = View.extend({
     'click a[href]': 'onLinkClick'
   },
 
+  bindings: {
+    'model.token': {
+      type: 'toggle',
+      hook: 'navbar'
+    },
+
+    'model.login': {
+      hook: 'username'
+    }
+  },
+
   initialize: function () {
     this.listenTo(app, 'page', this.onPage)
   },

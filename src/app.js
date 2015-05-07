@@ -12,6 +12,7 @@ app.extend({
     this.me = new Me()
     this.me.fetchInitialData()
     this.view = new MainView({
+      model: this.me,
       el: document.body
     })
     this.router = new Router()

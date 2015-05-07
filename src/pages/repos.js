@@ -8,7 +8,6 @@ module.exports = View.extend({
 
   render: function () {
     this.renderWithTemplate()
-
     this.renderCollection(app.me.repos, RepoItemView, this.queryByHook('repo-container'))
   }
 })
