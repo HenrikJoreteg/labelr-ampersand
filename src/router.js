@@ -5,10 +5,20 @@ var xhr = require('xhr')
 var ReposPage = require('./pages/repos')
 var PublicPage = require('./pages/public')
 
+function auth(handlerName) {
+  return function () {
+    if (app.me.token) {
+      this[handlerName].call(this, arguments)
+    } else {
+      this.redirectTo('/')
+    }
+  }
+}
+
 module.exports = Router.extend({
   routes: {
     '': 'public',
-    'repos': 'repos',
+    'repos': auth('repos'),
     'login': 'login',
     'logout': 'logout',
     'auth/callback': 'authCallback'
@@ -31,21 +41,43 @@ module.exports = Router.extend({
   },
 
   logout: function () {
-
+    window.localStorage.clear()
+    window.location = '/'
   },
 
   authCallback: function () {
     var query = qs.parse(window.location.search.slice(1))
-    console.log(query.code)
+    var self = this
 
     xhr({
       url: 'https://labelr-localhost.herokuapp.com/authenticate/' + query.code,
       json: true
     }, function (err, response, body) {
-      console.log(body)
+      app.me.token = body.token
+      self.redirectTo('/repos')
     })
   }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
