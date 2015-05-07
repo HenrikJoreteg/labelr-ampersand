@@ -4,7 +4,8 @@
   "description": "An awesome app for managing labels",
   "main": "index.js",
   "scripts": {
-    "deploy": "surge -p public -d pnnl.surge.sh"
+    "deploy": "surge -p public -d pnnl.surge.sh",
+    "commit": "git add --all && git commit -am \"$(date)\" && npm version minor && git push origin master --tags"
   },
   "author": "Henrik Joreteg <henrik@andyet.net>",
   "license": "MIT",
