@@ -10,6 +10,7 @@ window.app = app
 app.extend({
   init: function () {
     this.me = new Me()
+    this.me.fetchInitialData()
     this.view = new MainView({
       el: document.body
     })
