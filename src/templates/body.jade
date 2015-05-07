@@ -1,0 +1,12 @@
+body
+  nav.top-nav.top-nav-light.cf(data-hook='navbar', role='navigation')
+    input#menu-toggle.menu-toggle(type='checkbox')
+    label(for='menu-toggle') Menu
+    ul.list-unstyled.list-inline.cf
+      li Labelr
+      li
+        a(href='/repos') Repos
+      li.pull-right
+        span(data-hook='username')
+        a(href='/logout') Logout
+  .container(data-hook='page-container')
