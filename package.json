@@ -1,0 +1,14 @@
+{
+  "name": "pnnl",
+  "version": "1.0.0",
+  "description": "An awesome app for managing labels",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "surge -p public -d pnnl.surge.sh"
+  },
+  "author": "Henrik Joreteg <henrik@andyet.net>",
+  "license": "MIT",
+  "dependencies": {
+    "surge": "^0.11.1"
+  }
+}
