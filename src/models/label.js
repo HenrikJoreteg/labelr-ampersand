@@ -19,7 +19,8 @@ module.exports = Model.extend(githubMixin, {
     saved: {
       type: 'boolean',
       default: true
-    }
+    },
+    liveColor: 'string'
   },
 
   isNew: function () {
@@ -28,9 +29,10 @@ module.exports = Model.extend(githubMixin, {
 
   derived: {
     style: {
-      deps: ['color'],
+      deps: ['color', 'liveColor', 'editing'],
       fn: function () {
-        return 'background-color: #' + this.color
+        var color = this.editing ? this.liveColor : this.color
+        return 'background-color: #' + color
       }
     }
   },

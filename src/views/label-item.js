@@ -26,6 +26,7 @@ module.exports = View.extend({
     'click [data-hook=edit]': 'onEditClick',
     'click [data-hook=cancel]': 'onCancelClick',
     'click [data-hook=delete]': 'onDeleteClick',
+    'input input[name=color]': 'onColorInput',
     'submit form': 'onFormSubmit'
   },
 
@@ -38,13 +39,23 @@ module.exports = View.extend({
   },
 
   onEditClick: function () {
+    var color = this.model.color
     this.model.editing = true
     this.nameInput.value = this.model.name
-    this.colorInput.value = this.model.color
+    this.colorInput.value = color
+    this.model.liveColor = color
+  },
+
+  onColorInput: function () {
+    this.model.liveColor = this.colorInput.value.trim()
   },
 
   onCancelClick: function () {
-    this.model.editing = false
+    if (this.model.isNew()) {
+      this.model.destroy()
+    } else {
+      this.model.editing = false
+    }
   },
 
   onDeleteClick: function () {
@@ -56,7 +67,7 @@ module.exports = View.extend({
     var name = this.nameInput.value.trim()
     var color = this.colorInput.value.trim()
 
-    if (this.model.saved) {
+    if (this.model.isNew()) {
       this.model.update({
         name: name,
         color: color

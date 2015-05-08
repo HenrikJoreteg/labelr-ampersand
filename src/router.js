@@ -22,7 +22,7 @@ module.exports = Router.extend({
     'repos': auth('repos'),
     'login': 'login',
     'logout': 'logout',
-    'repo/:owner/:repo': 'repoDetail',
+    'repo/:owner/:repo': auth('repoDetail'),
     'auth/callback': 'authCallback'
   },
 
