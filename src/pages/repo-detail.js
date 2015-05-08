@@ -12,9 +12,38 @@ module.exports = View.extend({
 
   template: template,
 
+  events: {
+    'click [data-hook=add-label]': 'onAddClick'
+  },
+
   render: function () {
     this.renderWithTemplate(this)
-
     this.renderCollection(this.model.labels, LabelView, this.queryByHook('label-container'))
+  },
+
+  onAddClick: function () {
+    this.model.labels.add({
+      name: '',
+      color: '',
+      editing: true,
+      saved: false
+    }, {at: 0})
   }
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -53,10 +53,22 @@ module.exports = View.extend({
 
   onFormSubmit: function (event) {
     event.preventDefault()
-    this.model.update({
-      name: this.nameInput.value.trim(),
-      color: this.colorInput.value.trim()
-    })
+    var name = this.nameInput.value.trim()
+    var color = this.colorInput.value.trim()
+
+    if (this.model.saved) {
+      this.model.update({
+        name: name,
+        color: color
+      })
+    } else {
+      this.model.save({
+        name: name,
+        color: color
+      })
+      this.model.saved = true
+    }
+
     this.model.editing = false
   }
 })

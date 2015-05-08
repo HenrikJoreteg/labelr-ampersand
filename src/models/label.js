@@ -15,7 +15,15 @@ module.exports = Model.extend(githubMixin, {
     editing: {
       type: 'boolean',
       default: false
+    },
+    saved: {
+      type: 'boolean',
+      default: true
     }
+  },
+
+  isNew: function () {
+    return !this.saved
   },
 
   derived: {
