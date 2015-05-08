@@ -1,0 +1,13 @@
+div
+  form.label(data-hook='editing')
+    span.label-color(data-hook='color-dot') &nbsp;
+    input(name='name')
+    input(name='color')
+    button.button.button-small(type='submit') Save
+    button.button.button-small.button-unstyled(type='button', data-hook='cancel') cancel
+
+  .label(data-hook='viewing')
+    span.label-color(data-hook='color-dot') &nbsp;
+    span(data-hook='name')
+    span.octicon.octicon-pencil(data-hook='edit')
+    span.octicon.octicon-x(data-hook='delete')
