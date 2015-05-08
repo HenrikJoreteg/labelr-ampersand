@@ -28,6 +28,8 @@ module.exports = View.extend({
       editing: true,
       saved: false
     }, {at: 0})
+
+    this.query('input[name=name]').focus()
   }
 })
 
