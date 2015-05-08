@@ -4,6 +4,7 @@ var qs = require('qs')
 var xhr = require('xhr')
 var ReposPage = require('./pages/repos')
 var PublicPage = require('./pages/public')
+var RepoDetailPage = require('./pages/repo-detail')
 
 function auth(handlerName) {
   return function () {
@@ -21,6 +22,7 @@ module.exports = Router.extend({
     'repos': auth('repos'),
     'login': 'login',
     'logout': 'logout',
+    'repo/:owner/:repo': 'repoDetail',
     'auth/callback': 'authCallback'
   },
 
@@ -30,6 +32,11 @@ module.exports = Router.extend({
 
   repos: function () {
     app.trigger('page', new ReposPage())
+  },
+
+  repoDetail: function (owner, repo) {
+    var repo = app.me.repos.getByFullName(owner + '/' + repo)
+    app.trigger('page', new RepoDetailPage({model: repo}))
   },
 
   login: function () {
