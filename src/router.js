@@ -9,7 +9,7 @@ var RepoDetailPage = require('./pages/repo-detail')
 function auth(handlerName) {
   return function () {
     if (app.me.token) {
-      this[handlerName].call(this, arguments)
+      this[handlerName].apply(this, arguments)
     } else {
       this.redirectTo('/')
     }
