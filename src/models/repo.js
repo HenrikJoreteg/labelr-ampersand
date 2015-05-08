@@ -1,4 +1,5 @@
 var Model = require('ampersand-model')
+var LabelCollection = require('./label-collection')
 
 module.exports = Model.extend({
   url: function () {
@@ -18,5 +19,14 @@ module.exports = Model.extend({
         return '/repo/' + this.full_name
       }
     }
+  },
+
+  collections: {
+    labels: LabelCollection
+  },
+
+  fetch: function () {
+    Model.prototype.fetch.call(this, arguments)
+    this.labels.fetch()
   }
 })
