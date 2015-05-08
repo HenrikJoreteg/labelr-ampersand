@@ -1,6 +1,6 @@
 {
   "name": "pnnl",
-  "version": "1.17.0",
+  "version": "1.18.0",
   "description": "An awesome app for managing labels",
   "main": "index.js",
   "scripts": {
